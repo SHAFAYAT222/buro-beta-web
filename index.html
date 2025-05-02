@@ -14,7 +14,7 @@
     function askBot() {
       const input = document.getElementById("userInput").value;
 
-      fetch("https://hf.space/embed/shaan12/buro-beta-bot/api/predict/", {
+      fetch("https://hf.space/embed/shafayat222/buro-beta-bot/api/predict/", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ data: [input] })
@@ -22,6 +22,10 @@
       .then(res => res.json())
       .then(data => {
         document.getElementById("botReply").innerText = data.data[0];
+      })
+      .catch(error => {
+        document.getElementById("botReply").innerText = "বুড়ো বেটা এখন ঘুমাচ্ছে বা নেট বন্ধ!";
+        console.error("Error:", error);
       });
     }
   </script>
