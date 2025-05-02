@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>বুড়ো বেটা</title>
 </head>
 <body>
-  <h1>বুড়ো বেটা - মজার বাংলা বট</h1>
-  <p>এই বট ব্যবহার করতে নিচের বোতামে ক্লিক করো:</p>
-  <a href="https://huggingface.co/spaces/shaan12/buro-beta" target="_blank">
-    <button style="padding: 10px 20px; font-size: 18px;">বট খুলুন</button>
-  </a>
+  <h2>বুড়ো বেটার সাথে কথা বলো</h2>
+  <input type="text" id="userInput" placeholder="তুমি কী বলতে চাও?" />
+  <button onclick="askBot()">জিজ্ঞেস করো</button>
+  <p id="botReply">বুড়ো বেটা এখানেই উত্তর দেবে...</p>
+
+  <script>
+    function askBot() {
+      const input = document.getElementById("userInput").value;
+
+      fetch("https://hf.space/embed/shaan12/buro-beta-bot/api/predict/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: [input] })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("botReply").innerText = data.data[0];
+      });
+    }
+  </script>
 </body>
 </html>
