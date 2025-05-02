@@ -24,8 +24,8 @@
         document.getElementById("botReply").innerText = data.data[0];
       })
       .catch(error => {
-        document.getElementById("botReply").innerText = "বুড়ো বেটা এখন ঘুমাচ্ছে বা নেট বন্ধ!";
-        console.error("Error:", error);
+        document.getElementById("botReply").innerText = "বুড়ো বেটা এখন ঘুমাচ্ছে বা লিংকে সমস্যা!";
+        console.error("API error:", error);
       });
     }
   </script>
