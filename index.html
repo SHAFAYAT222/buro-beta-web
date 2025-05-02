@@ -6,29 +6,13 @@
 </head>
 <body>
   <h2>বুড়ো বেটার সাথে কথা বলো</h2>
-  <input type="text" id="userInput" placeholder="তুমি কী বলতে চাও?" />
-  <button onclick="askBot()">জিজ্ঞেস করো</button>
-  <p id="botReply">বুড়ো বেটা এখানেই উত্তর দেবে...</p>
 
-  <script>
-    function askBot() {
-      const input = document.getElementById("userInput").value;
+  <iframe 
+    src="https://huggingface.co/spaces/shaan12/buro-beta-bot" 
+    width="100%" 
+    height="600">
+  </iframe>
 
-      fetch("https://hf.space/embed/shaan12/buro-beta-bot/api/predict/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ data: [input] })
-      })
-      .then(res => res.json())
-      .then(data => {
-        document.getElementById("botReply").innerText = data.data[0];
-      })
-      .catch(error => {
-        document.getElementById("botReply").innerText = "বুড়ো বেটা এখন ঘুমাচ্ছে বা লিংকে সমস্যা!";
-        console.error("API error:", error);
-      });
-    }
-  </script>
 </body>
 </html>
 
